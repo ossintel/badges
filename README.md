@@ -1,81 +1,91 @@
 # OSSIntel Badges (`ossintel/badges`)
 
-[![OSSIntel OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/ossintel/ossintel.json)](https://ossintel.js.org/repo/ossintel/ossintel)
-[![OSSIntel Maintainer](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/user/mayank1513.json)](https://ossintel.js.org/user/mayank1513)
+[![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/repo/ossintel/ossintel.svg)](https://ossintel.js.org/repo/ossintel/ossintel)
+[![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/user/mayank1513.svg)](https://ossintel.js.org/user/mayank1513)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-> Zero-infrastructure, edge-cached endpoint badges for open-source repositories and developer identities, powered by [OSSIntel](https://ossintel.js.org).
+> Zero-infrastructure, edge-cached badges for open-source repositories and developer identities, powered by [OSSIntel](https://ossintel.js.org).
 
 ---
 
 ## 🚀 How It Works
 
-OSSIntel calculates deterministic intelligence scores (OSSIQ, velocity, health, risk, maintainer impact) and commits lightweight JSON endpoints directly to this repository. [Shields.io](https://shields.io/badges/endpoint-badge) reads these raw JSON endpoints and renders verifiable badges with zero server compute overhead.
+OSSIntel computes deterministic intelligence scores (OSSIQ) and automatically commits both **native dual-color SVGs** and lightweight **Shields.io JSON endpoints** to this repository.
 
 ```text
-┌─────────────────┐       ┌────────────────────┐       ┌─────────────────┐       ┌──────────────────┐
-│  OSSIntel Web   │ ───►  │  ossintel/badges   │ ───►  │  Shields.io     │ ───►  │  Your README.md  │
-│  (Analysis API) │       │  (GitHub Raw CDN)  │       │  (Edge Render)  │       │  (Embedded SVG)  │
-└─────────────────┘       └────────────────────┘       └─────────────────┘       └──────────────────┘
+┌─────────────────┐       ┌────────────────────┐       ┌──────────────────┐
+│  OSSIntel Web   │ ───►  │  ossintel/badges   │ ───►  │  Your README.md  │
+│  (Analysis API) │       │  (GitHub Raw CDN)  │       │  (Native SVG)    │
+└─────────────────┘       └────────────────────┘       └──────────────────┘
+                                    │
+                                    ▼
+                          ┌────────────────────┐       ┌──────────────────┐
+                          │  Shields.io        │ ───►  │  Your README.md  │
+                          │  (Custom Endpoint) │       │  (Shields Badge) │
+                          └────────────────────┘       └──────────────────┘
 ```
 
-- **Zero-Compute Serving**: Badges are served directly via GitHub's raw CDN and cached by Shields.io.
-- **Always Synchronized**: Analyzed repositories and user profiles automatically update in the background.
-- **Privacy & Rate-Limit Safe**: No API keys or backend servers hit when visitors load your README.
+- **Zero Compute at Render**: Badges are served directly by GitHub's global raw CDN.
+- **Dual-Color Typography**: Native SVGs feature the official OSSIntel circuit eye logo and dual-color `OSS` + `IQ` wordmark.
+- **Always Synchronized**: Analyzed repositories and user profiles automatically update on analysis.
+- **Privacy Safe**: Zero external tracking or server calls when visitors load your README.
 
 ---
 
 ## 📦 Usage & Embed Codes
 
-### 1. Repository Badges
+### Option 1: OSSIntel Native Badges (Recommended)
 
-Replace `:owner` and `:repo` with your target GitHub repository:
+Self-contained vector badges with contrast borders for seamless dark and light mode rendering.
 
-#### Markdown
-```markdown
-[![OSSIntel OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.json)](https://ossintel.js.org/repo/:owner/:repo)
-```
+#### Repository Badges
 
-#### HTML
-```html
-<a href="https://ossintel.js.org/repo/:owner/:repo">
-  <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.json" alt="OSSIntel OSSIQ" />
-</a>
-```
+* **Dark Theme (Default):**
+  ```markdown
+  [![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.svg)](https://ossintel.js.org/repo/:owner/:repo)
+  ```
+* **Light Theme:**
+  ```markdown
+  [![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo-light.svg)](https://ossintel.js.org/repo/:owner/:repo)
+  ```
 
----
+#### Developer / User Profile Badges
 
-### 2. Developer / User Profile Badges
-
-Replace `:username` with your GitHub handle:
-
-#### Markdown
-```markdown
-[![OSSIntel OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/user/:username.json)](https://ossintel.js.org/user/:username)
-```
-
-#### HTML
-```html
-<a href="https://ossintel.js.org/user/:username">
-  <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/user/:username.json" alt="OSSIntel OSSIQ" />
-</a>
-```
+* **Dark Theme (Default):**
+  ```markdown
+  [![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/user/:username.svg)](https://ossintel.js.org/user/:username)
+  ```
+* **Light Theme:**
+  ```markdown
+  [![OSSIQ](https://raw.githubusercontent.com/ossintel/badges/main/user/:username-light.svg)](https://ossintel.js.org/user/:username)
+  ```
 
 ---
 
-## 🎨 Metric & Style Customization
+### Option 2: Shields.io Endpoint Badges
 
-Shields.io supports query parameters for style, logos, and custom labels:
+Point [Shields.io](https://shields.io/badges/endpoint-badge) to the `.json` endpoint in this repository:
+
+#### Repository Badge
+```markdown
+[![OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.json)](https://ossintel.js.org/repo/:owner/:repo)
+```
+
+#### User Profile Badge
+```markdown
+[![OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/user/:username.json)](https://ossintel.js.org/user/:username)
+```
+
+#### Shields.io Customization Parameters
 
 | Parameter | Options | Example |
 | :--- | :--- | :--- |
-| **`style`** | `flat`, `flat-square`, `for-the-badge`, `plastic`, `social` | `&style=for-the-badge` |
-| **`logo`** | Any SimpleIcons slug (e.g., `github`, `typescript`, `react`) | `&logo=github` |
-| **`label`** | Custom badge text override | `&label=Project+OSSIQ` |
+| **`style`** | `flat`, `flat-square`, `for-the-badge`, `plastic` | `&style=for-the-badge` |
+| **`logo`** | SimpleIcons slug (e.g. `github`, `typescript`) | `&logo=github` |
+| **`label`** | Custom text override | `&label=Alpha+Score` |
 
-#### Example: "For-The-Badge" Style
 ```markdown
-[![OSSIntel OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.json&style=for-the-badge)](https://ossintel.js.org/repo/:owner/:repo)
+[![OSSIQ](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/ossintel/badges/main/repo/:owner/:repo.json&style=for-the-badge)](https://ossintel.js.org/repo/:owner/:repo)
 ```
 
 ---
@@ -83,20 +93,25 @@ Shields.io supports query parameters for style, logos, and custom labels:
 ## 📂 Repository Directory Layout
 
 ```text
+ossintel/badges
 ├── repo/
 │   └── :owner/
-│       └── :repo.json       # Repository OSSIQ metrics
+│       ├── :repo.svg          # Dark native SVG badge (Default)
+│       ├── :repo-light.svg    # Light native SVG badge
+│       └── :repo.json         # Shields.io endpoint schema
 └── user/
-    └── :username.json       # Developer identity OSSIQ metrics
+    ├── :username.svg          # Dark native SVG badge (Default)
+    ├── :username-light.svg    # Light native SVG badge
+    └── :username.json         # Shields.io endpoint schema
 ```
 
-### JSON Schema (Shields.io Custom Endpoint Standard)
+### JSON Schema (Shields.io Endpoint Standard)
 
 ```json
 {
   "schemaVersion": 1,
-  "label": "OSSIntel OSSIQ",
-  "message": "88/100",
+  "label": "OSSIQ",
+  "message": "95/100",
   "color": "brightgreen",
   "namedLogo": "github",
   "cacheSeconds": 3600
@@ -105,11 +120,11 @@ Shields.io supports query parameters for style, logos, and custom labels:
 
 ---
 
-## 🔒 Security & Contribution
+## 🔒 Security & Automation
 
-This repository is machine-managed by the **OSSIntel Platform**. Pull requests modifying JSON metrics manually will be rejected by CI.
+This repository is machine-managed by the **OSSIntel Platform**. Badge files are committed automatically during repository and profile evaluation. Manual edits to scores will be overwritten on the next sync.
 
-To refresh or update badge metrics for your repository or profile, analyze your project at [ossintel.js.org](https://ossintel.js.org).
+To evaluate or refresh badge scores, visit [ossintel.js.org](https://ossintel.js.org).
 
 ---
 
